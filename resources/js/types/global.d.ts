@@ -1,4 +1,6 @@
-import type { Auth } from '@/types/auth';
+// This keeps the file a module so the `declare module` blocks below augment the
+// real packages instead of replacing their types...
+export {};
 
 // Extend ImportMeta interface for Vite...
 declare module 'vite/client' {
@@ -17,7 +19,6 @@ declare module '@inertiajs/core' {
     export interface InertiaConfig {
         sharedPageProps: {
             name: string;
-            auth: Auth;
             sidebarOpen: boolean;
             [key: string]: unknown;
         };

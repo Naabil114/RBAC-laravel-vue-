@@ -1,16 +1,11 @@
 <?php
 
-use App\Models\User;
-
-test('guests are redirected to the login page', function () {
+test('the dashboard is reachable without logging in', function () {
     $response = $this->get(route('dashboard'));
-    $response->assertRedirect(route('login'));
+    $response->assertOk();
 });
 
-test('authenticated users can visit the dashboard', function () {
-    $user = User::factory()->create();
-    $this->actingAs($user);
-
-    $response = $this->get(route('dashboard'));
+test('the home page shows the dashboard', function () {
+    $response = $this->get(route('home'));
     $response->assertOk();
 });
